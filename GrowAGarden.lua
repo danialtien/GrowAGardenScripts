@@ -21,7 +21,7 @@ local icon = Instance.new("ImageButton")
 icon.Size = UDim2.new(0, 50, 0, 50)
 icon.Position = UDim2.new(0, 10, 0, 10)
 icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-icon.Image = "rbxassetid://replace_with_maus_icon_id" -- Thay bằng ID ảnh thực tế của MAUS
+icon.Image = "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" -- Thay bằng ID ảnh thực tế của MAUS
 icon.Parent = screenGui
 
 -- Sidebar Frame
