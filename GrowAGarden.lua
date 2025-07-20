@@ -8,7 +8,7 @@ screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
 screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
 screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
-
+screenGui.Enabled = true -- Bật GUI
 
 
 -- -- Sidebar Frame
