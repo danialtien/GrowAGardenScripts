@@ -6,9 +6,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
-screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
 screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
-screenGui.Enabled = false -- Ban đầu ẩn ScreenGui
 
 -- Sidebar Frame
 local sidebar = Instance.new("Frame")
