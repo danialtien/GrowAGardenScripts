@@ -16,38 +16,27 @@ local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
 
--- Icon tròn (MAUS)
-local icon = Instance.new("ImageButton")
-icon.Size = UDim2.new(0, 50, 0, 50)
-icon.Position = UDim2.new(0, 10, 0, 10)
-icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-icon.Image = "rbxassetid://replace_with_maus_icon_id" -- Thay bằng ID ảnh thực tế của MAUS
-icon.Parent = screenGui
 
--- Sidebar Frame
-local sidebar = Instance.new("Frame")
-sidebar.Size = UDim2.new(0, 100, 0, 90)
-sidebar.Position = UDim2.new(0, 10, 0, 70)
-sidebar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
-sidebar.BorderSizePixel = 0
-sidebar.Parent = screenGui
 
--- Nút "+" để mở Settings
+-- -- Sidebar Frame
+-- local sidebar = Instance.new("Frame")
+-- sidebar.Size = UDim2.new(0, 100, 0, 90)
+-- sidebar.Position = UDim2.new(0, 10, 0, 70)
+-- sidebar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+-- sidebar.BorderSizePixel = 0
+-- sidebar.Parent = screenGui
+
+-- Tạo nút bật tắt popup sử dụng ImageButton làm nút setting
 local settingsButton = Instance.new("ImageButton")
-settingsButton.Size =  UDim2.new(0, 50, 0, 50)
+settingsButton.Name = "SettingsButton"
+settingsButton.AnchorPoint = Vector2.new(0, 0)
+settingsButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
+settingsButton.Size = UDim2.new(0, 50, 0, 50)
 settingsButton.Position = UDim2.new(0, 10, 0, 10)
-settingsButton.BackgroundColor3 =  Color3.fromRGB(255, 255, 255)
-settingsButton.Image = "rbxassetid://376649791"
-settingsButton.Parent = sidebar
+settingsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+settingsButton.Image = "rbxassetid://376649791" -- Icon ID for settings
+settingsButton.Parent = screenGui
 
--- -- Nút "Scripting" (thay Credits)
--- local scriptingButton = Instance.new("TextButton")
--- scriptingButton.Size = UDim2.new(1, -10, 0, 40)
--- scriptingButton.Position = UDim2.new(0, 5, 0, 50)
--- scriptingButton.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
--- scriptingButton.Text = "Scripting"
--- scriptingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
--- scriptingButton.Parent = sidebar
 
 -- Khung popup Settings
 local settingsFrame = Instance.new("Frame")
