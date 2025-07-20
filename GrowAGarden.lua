@@ -15,7 +15,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
-screenGui.Enabled = true -- Bật GUI
+screenGui.Enabled = false -- Bật GUI
 
 
 
