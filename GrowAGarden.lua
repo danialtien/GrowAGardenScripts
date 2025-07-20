@@ -1,3 +1,12 @@
+--[[ 
+🌾 Grow A Garden AutoScript Pro with UI Popup Toggle
+Tính năng: Auto Plant, Auto Harvest, Auto Sell, Auto Buy, Craft, Remote Plant, Hatch Pet, Discord Notify
+--]]
+
+--------------------------
+-- PHẦN 1: UI & NÚT BẬT TẮT
+--------------------------
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
@@ -9,6 +18,7 @@ screenGui.ResetOnSpawn = false
 screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
 screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
 screenGui.Enabled = true -- Bật GUI
+
 
 
 -- -- Sidebar Frame
@@ -122,5 +132,111 @@ end
 
 -- Toggle hiển thị Settings/Scripting
 settingsButton.MouseButton1Click:Connect(function()
-    screenGui.Enabled = not screenGui.Enabled
+    settingsFrame.Visible = not settingsFrame.Visible
+    scriptingFrame.Visible = not screenGui.Enabled
 end)
+
+scriptingButton.MouseButton1Click:Connect(function()
+    scriptingFrame.Visible = not scriptingFrame.Visible
+    settingsFrame.Visible = false
+end)
+
+--------------------------
+-- PHẦN 2: CHỨC NĂNG AUTO
+--------------------------
+
+-- Hàm chức năng
+local function AutoPlantFunc(state) print("Auto Plant:", state) end
+local function AutoHarvestFunc(state) print("Auto Harvest:", state) end
+local function AutoSellFunc(state) print("Auto Sell:", state) end
+local function AutoBuyFunc(state) print("Auto Buy Seed:", state) end
+local function RemotePlantFunc(state) print("Remote Plant:", state) end
+local function AutoCraftFunc(state) print("Auto Craft:", state) end
+local function AutoHatchFunc(state) print("Auto Hatch:", state) end
+local function DiscordNotifyFunc(state) print("Discord Notify:", state) end
+
+-- Tạo toggle trong Settings
+createToggle("🪓 Auto Harvest", settingsFrame, AutoHarvestFunc)
+local autoPlantBtn = createToggle("🌱 Auto Plant", settingsFrame, AutoPlantFunc)
+local plantOptions = Instance.new("Frame", settingsFrame)
+plantOptions.Size = UDim2.new(1, -10, 0, 120)
+plantOptions.BackgroundTransparency = 1
+plantOptions.Visible = false
+createOptionToggle("Carrot", 10, 15, 1, plantOptions, autoPlantBtn)
+createOptionToggle("Strawberry", 20, 30, 2, plantOptions, autoPlantBtn)
+createOptionToggle("Blueberry", 25, 35, 3, plantOptions, autoPlantBtn)
+createOptionToggle("Tomato", 15, 25, 1, plantOptions, autoPlantBtn)
+autoPlantBtn.MouseButton1Click:Connect(function()
+    plantOptions.Visible = not plantOptions.Visible
+end)
+
+local autoSellBtn = createToggle("💰 Auto Sell", settingsFrame, AutoSellFunc)
+local sellSlider = createSellSlider(settingsFrame)
+sellSlider.Visible = false
+autoSellBtn.MouseButton1Click:Connect(function()
+    sellSlider.Visible = not sellSlider.Visible
+end)
+
+local autoBuySeedsBtn = createToggle("🛒 Auto Buy Seeds", settingsFrame, AutoBuyFunc)
+local seedOptions = Instance.new("Frame", settingsFrame)
+seedOptions.Size = UDim2.new(1, -10, 0, 120)
+seedOptions.BackgroundTransparency = 1
+seedOptions.Visible = false
+createToggle("Auto Buy Carrot", seedOptions, function(state) print("Auto Buy Carrot:", state) end)
+createToggle("Auto Buy Strawberry", seedOptions, function(state) print("Auto Buy Strawberry:", state) end)
+createToggle("Auto Buy Blueberry", seedOptions, function(state) print("Auto Buy Blueberry:", state) end)
+createToggle("Auto Buy Tomato", seedOptions, function(state) print("Auto Buy Tomato:", state) end)
+autoBuySeedsBtn.MouseButton1Click:Connect(function()
+    seedOptions.Visible = not seedOptions.Visible
+end)
+
+createToggle("🐣 Auto Buy Eggs", settingsFrame, AutoHatchFunc)
+createToggle("🛠️ Auto Buy Gear", settingsFrame, AutoBuyFunc)
+createToggle("💄 Auto Cosmetics", settingsFrame, AutoBuyFunc)
+createToggle("🌐 Remote Plant", settingsFrame, RemotePlantFunc)
+createToggle("🔨 Auto Craft", settingsFrame, AutoCraftFunc)
+createToggle("🔔 Discord Notify", settingsFrame, DiscordNotifyFunc)
+
+-- Tạo toggle trong Scripting (giống Settings)
+createToggle("🪓 Auto Harvest", scriptingFrame, AutoHarvestFunc)
+local autoPlantBtnScript = createToggle("🌱 Auto Plant", scriptingFrame, AutoPlantFunc)
+local plantOptionsScript = Instance.new("Frame", scriptingFrame)
+plantOptionsScript.Size = UDim2.new(1, -10, 0, 120)
+plantOptionsScript.BackgroundTransparency = 1
+plantOptionsScript.Visible = false
+createOptionToggle("Carrot", 10, 15, 1, plantOptionsScript, autoPlantBtnScript)
+createOptionToggle("Strawberry", 20, 30, 2, plantOptionsScript, autoPlantBtnScript)
+createOptionToggle("Blueberry", 25, 35, 3, plantOptionsScript, autoPlantBtnScript)
+createOptionToggle("Tomato", 15, 25, 1, plantOptionsScript, autoPlantBtnScript)
+autoPlantBtnScript.MouseButton1Click:Connect(function()
+    plantOptionsScript.Visible = not plantOptionsScript.Visible
+end)
+
+local autoSellBtnScript = createToggle("💰 Auto Sell", scriptingFrame, AutoSellFunc)
+local sellSliderScript = createSellSlider(scriptingFrame)
+sellSliderScript.Visible = false
+autoSellBtnScript.MouseButton1Click:Connect(function()
+    sellSliderScript.Visible = not sellSliderScript.Visible
+end)
+
+local autoBuySeedsBtnScript = createToggle("🛒 Auto Buy Seeds", scriptingFrame, AutoBuyFunc)
+local seedOptionsScript = Instance.new("Frame", scriptingFrame)
+seedOptionsScript.Size = UDim2.new(1, -10, 0, 120)
+seedOptionsScript.BackgroundTransparency = 1
+seedOptionsScript.Visible = false
+createToggle("Auto Buy Carrot", seedOptionsScript, function(state) print("Auto Buy Carrot:", state) end)
+createToggle("Auto Buy Strawberry", seedOptionsScript, function(state) print("Auto Buy Strawberry:", state) end)
+createToggle("Auto Buy Blueberry", seedOptionsScript, function(state) print("Auto Buy Blueberry:", state) end)
+createToggle("Auto Buy Tomato", seedOptionsScript, function(state) print("Auto Buy Tomato:", state) end)
+autoBuySeedsBtnScript.MouseButton1Click:Connect(function()
+    seedOptionsScript.Visible = not seedOptionsScript.Visible
+end)
+
+createToggle("🐣 Auto Buy Eggs", scriptingFrame, AutoHatchFunc)
+createToggle("🛠️ Auto Buy Gear", scriptingFrame, AutoBuyFunc)
+createToggle("💄 Auto Cosmetics", scriptingFrame, AutoBuyFunc)
+createToggle("🌐 Remote Plant", scriptingFrame, RemotePlantFunc)
+createToggle("🔨 Auto Craft", scriptingFrame, AutoCraftFunc)
+createToggle("🔔 Discord Notify", scriptingFrame, DiscordNotifyFunc)
+
+print("✅ Grow a Garden Auto Script with Popup UI loaded.")
