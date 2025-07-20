@@ -50,8 +50,8 @@ title.TextSize = 22
 -- Hàm tạo Toggle nút
 local function createToggle(name, callback)
     local btn = Instance.new("TextButton", popupFrame)
-    btn.Size = UDim2.new(1, -10, 0, 30)
-    btn.Position = UDim2.new(0, 5, 0, 0)
+    btn.Size = UDim2.new(0.5, -50, 0.5 , 30)
+    btn.Position = UDim2.new(0.5 , 5, 0.5, 0)
     btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     btn.TextColor3 = Color3.new(1, 1, 1)
     btn.Font = Enum.Font.SourceSansBold
