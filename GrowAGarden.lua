@@ -1,4 +1,5 @@
-local player = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 local screenGui = Instance.new("ScreenGui")
@@ -11,7 +12,7 @@ imageLabel.Size = UDim2.new(0, 200, 0, 200)
 imageLabel.Position = UDim2.new(0.5, -100, 0.5, -100)
 imageLabel.Image = "rbxassetid://376649791"
 imageLabel.BackgroundTransparency = 1
-imageLabel.Visible = false -- Ẩn ban đầu
+imageLabel.Visible = true 
 
 -- Hàm bật/tắt ScreenGui
 local function toggleGui()
