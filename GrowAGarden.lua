@@ -13,15 +13,14 @@ screenGui.Name = "GrowAutoToolGUI"
 screenGui.ResetOnSpawn = false
 
 -- Tạo nút H
-local toggleButton = Instance.new("TextButton")
-toggleButton.Name = "TogglePopupButton"
-toggleButton.Size = UDim2.new(0, 40, 0, 40)
-toggleButton.Position = UDim2.new(1, -50, 0, 100)
-toggleButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-toggleButton.Text = "H"
-toggleButton.TextColor3 = Color3.new(1, 1, 1)
-toggleButton.Font = Enum.Font.SourceSansBold
-toggleButton.TextSize = 24
+local toggleButton = Instance.new("ImageButton")
+toggleButton.Name = "SettingsButton"
+toggleButton.AnchorPoint = Vector2.new(0, 0)
+toggleButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
+toggleButton.Size = UDim2.new(0, 50, 0, 50)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.Image = "rbxassetid://376649791" -- Icon ID for settings
 toggleButton.Parent = screenGui
 
 -- Tạo Frame popup
