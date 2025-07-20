@@ -15,14 +15,16 @@ local playerGui = player:WaitForChild("PlayerGui")
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
-screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
-screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
-screenGui.Enabled = true -- Bật GUI
-screenGui.Visible = true -- Hiển thị GUI
 
+-- Icon tròn (MAUS)
+local icon = Instance.new("ImageButton")
+icon.Size = UDim2.new(0, 50, 0, 50)
+icon.Position = UDim2.new(0, 10, 0, 10)
+icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+icon.Image = "rbxassetid://replace_with_maus_icon_id" -- Thay bằng ID ảnh thực tế của MAUS
+icon.Parent = screenGui
 
-
--- -- Sidebar Frame
+-- Sidebar Frame
 local sidebar = Instance.new("Frame")
 sidebar.Size = UDim2.new(0, 100, 0, 90)
 sidebar.Position = UDim2.new(0, 10, 0, 70)
@@ -30,19 +32,25 @@ sidebar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
 sidebar.BorderSizePixel = 0
 sidebar.Parent = screenGui
 
--- Tạo nút bật tắt popup sử dụng ImageButton làm nút setting
-local settingsButton = Instance.new("ImageButton")
-settingsButton.Name = "SettingsButton"
-settingsButton.AnchorPoint = Vector2.new(0, 0)
-settingsButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
-settingsButton.Size = UDim2.new(0, 50, 0, 50)
-settingsButton.Position = UDim2.new(0, 10, 0, 10)
-settingsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-settingsButton.Image = "rbxassetid://376649791" -- Icon ID for settings
-settingsButton.Parent = screenGui
+-- Nút "+" để mở Settings
+local settingsButton = Instance.new("TextButton")
+settingsButton.Size = UDim2.new(1, -10, 0, 40)
+settingsButton.Position = UDim2.new(0, 5, 0, 5)
+settingsButton.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
+settingsButton.Text = "+"
+settingsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+settingsButton.Parent = sidebar
 
+-- Nút "Scripting" (thay Credits)
+local scriptingButton = Instance.new("TextButton")
+scriptingButton.Size = UDim2.new(1, -10, 0, 40)
+scriptingButton.Position = UDim2.new(0, 5, 0, 50)
+scriptingButton.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
+scriptingButton.Text = "Scripting"
+scriptingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+scriptingButton.Parent = sidebar
 
--- -- Khung popup Settings
+-- Khung popup Settings
 local settingsFrame = Instance.new("Frame")
 settingsFrame.Size = UDim2.new(0, 250, 0, 350)
 settingsFrame.Position = UDim2.new(0, 120, 0, 10)
@@ -65,7 +73,11 @@ title.Font = Enum.Font.SourceSansBold
 title.TextColor3 = Color3.new(1, 1, 1)
 title.TextSize = 22
 
-
+-- Khung popup Scripting
+local scriptingFrame = settingsFrame:Clone()
+scriptingFrame.Name = "ScriptingFrame"
+scriptingFrame.Parent = screenGui
+scriptingFrame.Visible = false
 
 -- Hàm tạo toggle
 local function createToggle(name, frame, callback)
@@ -134,7 +146,7 @@ end
 -- Toggle hiển thị Settings/Scripting
 settingsButton.MouseButton1Click:Connect(function()
     settingsFrame.Visible = not settingsFrame.Visible
-    scriptingFrame.Visible = not screenGui.Enabled
+    scriptingFrame.Visible = false
 end)
 
 scriptingButton.MouseButton1Click:Connect(function()
