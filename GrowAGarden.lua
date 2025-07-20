@@ -16,6 +16,7 @@ local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
 screenGui.Enabled = false -- Bật GUI
+screenGui.Visible = true -- Hiển thị GUI
 
 
 
