@@ -15,7 +15,9 @@ local playerGui = player:WaitForChild("PlayerGui")
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "GrowAGardenUI"
 screenGui.ResetOnSpawn = false
-screenGui.Enabled = false -- Bật GUI
+screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
+screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
+screenGui.Enabled = true -- Bật GUI
 screenGui.Visible = true -- Hiển thị GUI
 
 
@@ -41,27 +43,27 @@ settingsButton.Parent = screenGui
 
 
 -- -- Khung popup Settings
--- local settingsFrame = Instance.new("Frame")
--- settingsFrame.Size = UDim2.new(0, 250, 0, 350)
--- settingsFrame.Position = UDim2.new(0, 120, 0, 10)
--- settingsFrame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
--- settingsFrame.BorderSizePixel = 0
--- settingsFrame.Visible = false
--- settingsFrame.Parent = screenGui
+local settingsFrame = Instance.new("Frame")
+settingsFrame.Size = UDim2.new(0, 250, 0, 350)
+settingsFrame.Position = UDim2.new(0, 120, 0, 10)
+settingsFrame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+settingsFrame.BorderSizePixel = 0
+settingsFrame.Visible = false
+settingsFrame.Parent = screenGui
 
 -- Layout cho Settings
--- local layout = Instance.new("UIListLayout", settingsFrame)
--- layout.FillDirection = Enum.FillDirection.Vertical
--- layout.Padding = UDim.new(0, 5)
+local layout = Instance.new("UIListLayout", settingsFrame)
+layout.FillDirection = Enum.FillDirection.Vertical
+layout.Padding = UDim.new(0, 5)
 
 -- Tiêu đề Settings
--- local title = Instance.new("TextLabel", settingsFrame)
--- title.Size = UDim2.new(1, 0, 0, 30)
--- title.Text = "🌾 Auto Features"
--- title.BackgroundTransparency = 1
--- title.Font = Enum.Font.SourceSansBold
--- title.TextColor3 = Color3.new(1, 1, 1)
--- title.TextSize = 22
+local title = Instance.new("TextLabel", settingsFrame)
+title.Size = UDim2.new(1, 0, 0, 30)
+title.Text = "🌾 Auto Features"
+title.BackgroundTransparency = 1
+title.Font = Enum.Font.SourceSansBold
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextSize = 22
 
 
 
