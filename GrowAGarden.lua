@@ -2,26 +2,34 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = playerGui
-screenGui.Name = "ToggleScreenGui"
+-- Tạo ScreenGui
+local screenGui = Instance.new("ScreenGui", playerGui)
+screenGui.Name = "GrowAGardenUI"
+screenGui.ResetOnSpawn = false
+screenGui.DisplayOrder = 10 -- Đặt thứ tự hiển thị cao hơn các UI khác
+screenGui.IgnoreGuiInset = true -- Bỏ qua khoảng cách của GUI
+screenGui.Enabled = false -- Ban đầu ẩn ScreenGui
 
-local imageLabel = Instance.new("ImageLabel")
-imageLabel.Parent = screenGui
-imageLabel.Size = UDim2.new(0, 200, 0, 200)
-imageLabel.Position = UDim2.new(0.5, -100, 0.5, -100)
-imageLabel.Image = "rbxassetid://376649791"
-imageLabel.BackgroundTransparency = 1
-imageLabel.Visible = true 
+-- Sidebar Frame
+local sidebar = Instance.new("Frame")
+sidebar.Size = UDim2.new(0, 100, 0, 90)
+sidebar.Position = UDim2.new(0, 10, 0, 70)
+sidebar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+sidebar.BorderSizePixel = 0
+sidebar.Parent = screenGui
 
--- Hàm bật/tắt ScreenGui
-local function toggleGui()
-    imageLabel.Visible = not imageLabel.Visible
-end
+-- Tạo nút bật tắt popup sử dụng ImageButton
+local settingsButton = Instance.new("ImageButton")
+settingsButton.Name = "SettingsButton"
+settingsButton.AnchorPoint = Vector2.new(0, 0)
+settingsButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
+settingsButton.Size = UDim2.new(0, 50, 0, 50)
+settingsButton.Position = UDim2.new(0, 10, 0, 10)
+settingsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+settingsButton.Image = "rbxassetid://376649791" -- Icon ID for settings
+settingsButton.Parent = screenGui
 
--- Gán phím "E" để bật/tắt
-game:GetService("UserInputService").InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.E then
-        toggleGui()
-    end
+-- Toggle hiển thị ScreenGui
+settingsButton.MouseButton1Click:Connect(function()
+    screenGui.Enabled = not screenGui.Enabled
 end)
