@@ -9,7 +9,7 @@ screenGui.Name = "SettingsUI"
 -- Create Logo Icon
 local logo = Instance.new("ImageButton")
 logo.Size = UDim2.new(0, 50, 0, 50) -- Default size, adjustable radius
-logo.Position = UDim2.new(0.5, -25, 0.9, -25) -- Bottom center
+logo.Position = UDim2.new(0.5, -25, 0.75, -25) -- Below garden, above seeds
 logo.Image = "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png"
 logo.BackgroundTransparency = 1
 logo.Parent = screenGui
@@ -45,7 +45,7 @@ end)
 -- Adjustable Radius Function (via script command)
 local function setLogoRadius(radius)
     logo.Size = UDim2.new(0, radius * 2, 0, radius * 2)
-    logo.Position = UDim2.new(0.5, -radius, 0.9, -radius)
+    logo.Position = UDim2.new(0.5, -radius, 0.75, -radius) -- Adjusted position
 end
 
 -- Example: Set initial radius to 25
