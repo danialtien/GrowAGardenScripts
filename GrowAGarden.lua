@@ -21,7 +21,7 @@ local icon = Instance.new("ImageButton")
 icon.Size = UDim2.new(0, 50, 0, 50)
 icon.Position = UDim2.new(0, 10, 0, 10)
 icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-icon.Image = "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" -- Thay bằng ID ảnh thực tế của MAUS
+icon.Image = "rbxassetid://replace_with_maus_icon_id" -- Thay bằng ID ảnh thực tế của MAUS
 icon.Parent = screenGui
 
 -- Sidebar Frame
@@ -32,19 +32,25 @@ sidebar.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
 sidebar.BorderSizePixel = 0
 sidebar.Parent = screenGui
 
--- Nút "+" để mở Settings
-local settingsButton = Instance.new("TextButton")
-settingsButton.Size = UDim2.new(1, -10, 0, 40)
-settingsButton.Position = UDim2.new(0, 5, 0, 5)
-settingsButton.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
-settingsButton.Text = "+"
-settingsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-settingsButton.Parent = sidebar
+-- Nút Logo tròn để mở Settings
+local settingsLogo = Instance.new("ImageButton")
+settingsLogo.Size = UDim2.new(0, 80, 0, 80) -- Kích thước lớn hơn để chứa logo
+settingsLogo.Position = UDim2.new(0, 10, 0, 5)
+settingsLogo.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
+settingsLogo.Image = "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png"
+settingsLogo.BackgroundTransparency = 0
+settingsLogo.BorderSizePixel = 0
+settingsLogo.ImageTransparency = 0
+settingsLogo.Parent = sidebar
+settingsLogo.MouseButton1Click:Connect(function()
+    settingsFrame.Visible = not settingsFrame.Visible
+    scriptingFrame.Visible = false
+end)
 
--- Nút "Scripting" (thay Credits)
+-- Nút "Scripting"
 local scriptingButton = Instance.new("TextButton")
 scriptingButton.Size = UDim2.new(1, -10, 0, 40)
-scriptingButton.Position = UDim2.new(0, 5, 0, 50)
+scriptingButton.Position = UDim2.new(0, 5, 0, 90)
 scriptingButton.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
 scriptingButton.Text = "Scripting"
 scriptingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -144,7 +150,7 @@ local function createSellSlider(frame)
 end
 
 -- Toggle hiển thị Settings/Scripting
-settingsButton.MouseButton1Click:Connect(function()
+settingsLogo.MouseButton1Click:Connect(function()
     settingsFrame.Visible = not settingsFrame.Visible
     scriptingFrame.Visible = false
 end)
