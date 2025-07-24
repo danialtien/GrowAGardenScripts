@@ -5,7 +5,7 @@ getgenv().Config = {
         ["Anti Bee Egg"] = true
     },
     ["Dont Open Pack"] = false,
-    ["Mode Plant"] = "Auto", -- "Custom"
+    ["Mode Plant"] = "Custom", -- "Custom Or Auto"
 
     ["Seed"] = { -- Seed Plant Custom
         ["Strawberry"] = 44,
@@ -96,7 +96,7 @@ getgenv().Config = {
         ["Koi"] = true,
         ["Spiked Mango"] = true
     },
-    ["Url"] = "", -- Webhook 
+    ["Url"] = "https://discordapp.com/api/webhooks/1397964656626241617/M0czRe1aeY8Teq-OB5kF5sQ3xG5FX17LmB6RIfRnymuNaG80aC2Qpp7KLPBX9luYmys0", -- Webhook 
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
     ["Note"] = "Cyndral Hub",
