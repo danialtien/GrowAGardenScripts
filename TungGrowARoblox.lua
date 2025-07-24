@@ -120,7 +120,9 @@ getgenv().Config = {
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = true,
-        ["Weight"] = 10 -- if Weight >= 10 they will send wh
+        ["Weight"] = 10, -- if Weight >= 10 they will send wh
+        ["Enable Coin Notify"] = true,
+        ["Coin Threshold"] = 32000000,
     }
 
 }
@@ -2265,8 +2267,11 @@ function getnumpet()
     end
     return cnt
 end
+-- local Webhook =
+--    "https://discord.com/api/webhooks/1372172655347630142/3QcALa0PLzgM3Tjh_9mDrC7K3Lw0BR2J6214UdDuuGNDRIFRzvXgJ7TIAR_yVpHTUXIa"
+
 local Webhook =
-    "https://discord.com/api/webhooks/1372172655347630142/3QcALa0PLzgM3Tjh_9mDrC7K3Lw0BR2J6214UdDuuGNDRIFRzvXgJ7TIAR_yVpHTUXIa"
+    "https://discordapp.com/api/webhooks/1397964656626241617/M0czRe1aeY8Teq-OB5kF5sQ3xG5FX17LmB6RIfRnymuNaG80aC2Qpp7KLPBX9luYmys0"
 
 local HttpService = game:GetService("HttpService")
 local requestt = http_request or request or syn.request
@@ -2653,6 +2658,43 @@ function getpos()
         end
     end
 end
+
+---
+-- 📡 Gửi webhook khi coin đạt ngưỡng
+spawn(function()
+    if not getgenv().Config["Webhook Mode"] or not getgenv().Config["Webhook Mode"]["Enable Coin Notify"] then return end
+
+    local threshold = getgenv().Config["Webhook Mode"]["Coin Threshold"] or 32000000
+    local url = getgenv().Config["Url"]
+    local player = game:GetService("Players").LocalPlayer
+    local leaderstats = player:WaitForChild("leaderstats")
+    local money = leaderstats:WaitForChild("Money")
+
+    local hasSent = false -- Đảm bảo chỉ gửi 1 lần
+
+    while true do
+        if money.Value >= threshold and not hasSent and url ~= "" then
+            hasSent = true -- chỉ gửi 1 lần
+            syn.request({
+                Url = url,
+                Method = "POST",
+                Headers = { ["Content-Type"] = "application/json" },
+                Body = game:GetService("HttpService"):JSONEncode({
+                    username = "Grow A Garden Alert",
+                    embeds = {{
+                        title = "💰 Đã đạt ngưỡng coin!",
+                        description = "**Bạn đã có hơn " .. threshold .. " coin!**",
+                        color = 16776960
+                    }}
+                })
+            })
+        end
+        wait(5)
+    end
+end)
+
+
+---
 
 spawn(function()
     pcall(function()
