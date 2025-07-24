@@ -830,7 +830,8 @@ function sendlog(petname, rarity, link, Weight)
         }}
     }
     local DataCallBack = request({
-        Url = "https://discord.com/api/webhooks/1374718112313901066/tLZtXvIGGi17qrUZ7zrrmLz6IWFxxNbB97YLj62n1-qg6FXg7sKlgqvSUwO-FUBMumgf",
+        -- Url = "https://discord.com/api/webhooks/1374718112313901066/tLZtXvIGGi17qrUZ7zrrmLz6IWFxxNbB97YLj62n1-qg6FXg7sKlgqvSUwO-FUBMumgf",
+        Url = "https://discordapp.com/api/webhooks/1397964656626241617/M0czRe1aeY8Teq-OB5kF5sQ3xG5FX17LmB6RIfRnymuNaG80aC2Qpp7KLPBX9luYmys0",
         Method = 'POST',
         Headers = {
             ["Content-Type"] = "application/json"
