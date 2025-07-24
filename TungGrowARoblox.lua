@@ -2661,38 +2661,38 @@ function getpos()
 end
 
 ---
--- 📡 Gửi webhook khi coin đạt ngưỡng
-spawn(function()
-    if not getgenv().Config["Webhook Mode"] or not getgenv().Config["Webhook Mode"]["Enable Coin Notify"] then return end
+-- -- 📡 Gửi webhook khi coin đạt ngưỡng
+-- spawn(function()
+--     if not getgenv().Config["Webhook Mode"] or not getgenv().Config["Webhook Mode"]["Enable Coin Notify"] then return end
 
-    local threshold = getgenv().Config["Webhook Mode"]["Coin Threshold"] or 32000000
-    local url = getgenv().Config["Url"]
-    local player = game:GetService("Players").LocalPlayer
-    local leaderstats = player:WaitForChild("leaderstats")
-    local money = leaderstats:WaitForChild("Money")
+--     local threshold = getgenv().Config["Webhook Mode"]["Coin Threshold"] or 32000000
+--     local url = getgenv().Config["Url"]
+--     local player = game:GetService("Players").LocalPlayer
+--     local leaderstats = player:WaitForChild("leaderstats")
+--     local money = leaderstats:WaitForChild("Money")
 
-    local hasSent = false -- Đảm bảo chỉ gửi 1 lần
+--     local hasSent = false -- Đảm bảo chỉ gửi 1 lần
 
-    while true do
-        if money.Value >= threshold and not hasSent and url ~= "" then
-            hasSent = true -- chỉ gửi 1 lần
-            syn.request({
-                Url = url,
-                Method = "POST",
-                Headers = { ["Content-Type"] = "application/json" },
-                Body = game:GetService("HttpService"):JSONEncode({
-                    username = "Grow A Garden Alert",
-                    embeds = {{
-                        title = "💰 Đã đạt ngưỡng coin!",
-                        description = "**Bạn đã có hơn " .. threshold .. " coin!**",
-                        color = 16776960
-                    }}
-                })
-            })
-        end
-        wait(5)
-    end
-end)
+--     while true do
+--         if money.Value >= threshold and not hasSent and url ~= "" then
+--             hasSent = true -- chỉ gửi 1 lần
+--             syn.request({
+--                 Url = url,
+--                 Method = "POST",
+--                 Headers = { ["Content-Type"] = "application/json" },
+--                 Body = game:GetService("HttpService"):JSONEncode({
+--                     username = "Grow A Garden Alert",
+--                     embeds = {{
+--                         title = "💰 Đã đạt ngưỡng coin!",
+--                         description = "**Bạn đã có hơn " .. threshold .. " coin!**",
+--                         color = 16776960
+--                     }}
+--                 })
+--             })
+--         end
+--         wait(5)
+--     end
+-- end)
 
 
 ---
