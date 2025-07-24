@@ -119,7 +119,7 @@ getgenv().Config = {
         ["Dont Sell Pet If Weight > x"] = 10 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
-        ["Enable Send Pet Weight"] = false,
+        ["Enable Send Pet Weight"] = true,
         ["Weight"] = 10 -- if Weight >= 10 they will send wh
     }
 
